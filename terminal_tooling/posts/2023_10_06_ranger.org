@@ -1,4 +1,4 @@
-* Ranger                                                      :file:managers:
+* Ranger                                                      :file_managers:
 
   [[https://github.com/ranger/ranger][Ranger]] is a "console file manager with VI key bindings."
 
