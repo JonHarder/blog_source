@@ -4,4 +4,3 @@
 
   - [[file:terminal_tooling/index.org][Terminal Tooling]]
   - [[file:emacs/index.org][Emacs]]
-
