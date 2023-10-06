@@ -1,0 +1,8 @@
+* jonharder.github.io blog source
+
+  This repository tracks the source for my blog hosted at
+  [[https://jonharder.github.io]].
+
+  The HTML that ultimately gets hosted is generated using emacs with
+  [[https://orgmode.org/manual/Publishing.html][org-publish]]. The project is configured in my emacs configuration [[https://github.com/JonHarder/emacs_config/blob/main/config.org#org-publish][here]].
+  

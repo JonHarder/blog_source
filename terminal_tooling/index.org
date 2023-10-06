@@ -3,7 +3,7 @@
   keyboard-centric tools. I have a fixation on finding tools that minimize the
   friction between my thoughts and the computer.
   
-  In my journey this has lead me to terminal based workflows using terminal text
+  On my journey this has lead me to terminal based workflows using terminal text
   editors, multiplexers, command line chat apps, note taking tools, and much more.
   
   In this weekly series of articles, I hope to publish deep dives into a variety of
