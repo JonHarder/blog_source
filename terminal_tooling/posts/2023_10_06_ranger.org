@@ -21,7 +21,7 @@
 ** Overview
 
  #+attr_html: :width 900px
- [[file:/images/terminal_tooling/posts/ranger/dir_view.png]]
+ [[/images/terminal_tooling/posts/ranger/dir_view.png]]
 
 ** Installing
 
