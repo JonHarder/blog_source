@@ -1,3 +1,4 @@
+#+TITLE: Terminal Tooling
 * Terminal tooling
   Over the years of working in software, I've sampled many, many command line and
   keyboard-centric tools. I have a fixation on finding tools that minimize the
@@ -8,9 +9,13 @@
   
   In this weekly series of articles, I hope to publish deep dives into a variety of
   topics including file managers, core shell commands to help you master your system,
-  innovative reimaginations of those classic commands, and novel tools which aim to
+  innovative re-imaginations of those classic commands, and novel tools which aim to
   bring more of your life into the terminal (like note taking, music players, chat
   clients, etc.)
+
+  To kick off the inaugural article, I will be taking a look at the terminal file
+  manager, [[file:posts/2023_10_06_ranger.org][ranger]].  This will be the first of 4 articles focusing on terminal
+  file managers (October is national terminal file manager month...I just decided).
 
 ** Posts
    - [2023-10-06] [[file:posts/2023_10_06_ranger.org][Ranger]]

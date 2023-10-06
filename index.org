@@ -1,4 +1,6 @@
-* My Blog
+#+TITLE: The Terminal Toolist
+Welcome. This is my personal blog for all things tech. I like to tinker
+with terminal tools, keyboards, and emacs.
 
 ** Subjects
 
