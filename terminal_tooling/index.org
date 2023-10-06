@@ -1,0 +1,16 @@
+* Terminal tooling
+  Over the years of working in software, I've sampled many, many command line and
+  keyboard-centric tools. I have a fixation on finding tools that minimize the
+  friction between my thoughts and the computer.
+  
+  In my journey this has lead me to terminal based workflows using terminal text
+  editors, multiplexers, command line chat apps, note taking tools, and much more.
+  
+  In this weekly series of articles, I hope to publish deep dives into a variety of
+  topics including file managers, core shell commands to help you master your system,
+  innovative reimaginations of those classic commands, and novel tools which aim to
+  bring more of your life into the terminal (like note taking, music players, chat
+  clients, etc.)
+
+** Posts
+   - [2023-10-06] [[file:posts/2023_10_06_ranger.org][Ranger]]

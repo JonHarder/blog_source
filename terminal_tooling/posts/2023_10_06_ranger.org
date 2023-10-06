@@ -1,0 +1,9 @@
+* Ranger                                                      :file:managers:
+
+  [[https://github.com/ranger/ranger][Ranger]] is a "console file manager with VI key bindings."
+
+** Installing
+
+  #+begin_src shell
+    brew install ranger
+  #+end_src
