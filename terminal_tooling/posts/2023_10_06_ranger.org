@@ -1,27 +1,68 @@
 #+TITLE: Ranger - Terminal Tooling
 #+STARTUP: inlineimages
 * Ranger                                                      :file_managers:
+  [[https://ranger.github.io/][Ranger]] is a "console file manager with VI key bindings." Specifically it is a terminal
+  file manager. You're most likely familiar with GUI file managers in the form of mac's
+  finder, or the directrory viewer built into your editor of choice.
 
-  [[https://github.com/ranger/ranger][Ranger]] is a "console file manager with VI key bindings." Specifically
-  it is a terminal file manager. You're most likely familiar with GUI
-  file managers in the form of mac's finder, or the directrory viewer
-  built into your editor of choice.
+  Terminal file managers live in a unique space as they tend to focus on keyboard based
+  workflows over click-and-drag mouse-based workflows. How can you get anything done as
+  a file manager using just your keyboard? If you're in the terminal, why not just use
+  good ol' cd, mv, cp, rm and friends?
 
-  Terminal file managers operate in a unique space as they tend to
-  focus on keyboard based workflows over click-and-drag mouse-based
-  workflows. How can you get anything done as a file manager using
-  just your keyboard? If you're in the terminal, why not just use
-  good ol' ~cd~, ~mv~, ~cp~, ~rm~ and friends?
-
-  What you lose in intuitive (read: familiar) UI, you gain in
-  expressive and configurable power.
+  What you lose in intuitive (read: familiar) UI, you gain in expressive and configurable
+  power.
 
   Convinced? Not yet? Let's see some examples
 
 ** Overview
 
  #+attr_html: :width 900px
- [[/images/terminal_tooling/posts/ranger/dir_view.png]]
+ [[../../images/terminal_tooling/posts/2023_10_06_ranger/dir_view.png]]
+
+  This is the initial view using ranger. You'll notice three vertical columns (and three
+  highlighted files/directories). The center of the three is the working column, and it's on
+  the selected entry in this column that your actions will operate (in this example, on the
+  =kubernetes= directory).
+
+  The left column is the parent directory, and the right directory displays either the contents
+  of the current directory if a directory is highlighted, or a preview of the file if a file
+  is highlighted.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_06_ranger/file_view.png]]
+ 
+  You might recognize this three-pane design pattern. If you've used the GUI file manager
+  for macOS, Finder, this design has been a staple since their [[https://flaming.codes/posts/miller-columns-filesystem-ui][NeXT]] days.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_06_ranger/finder.png]]
+
+
+** Navigation and file manipulation
+
+*** Movement
+
+  For a tool that touts "VI key bindings", no one should be surprised at the basic file
+  and directory navigation keys: =h=, =j=, =k=, and =l=. =j= moves the selection in the center column one item
+  down. =k= moves one item up. =l= will either move into the directory of the selection, or open the
+  file of the selection by using your configured [[https://bash.cyberciti.biz/guide/$EDITOR_variable][$EDITOR]].
+
+  Moving around with h, j, k, and l allows you to fly around your file system, and the three-column
+  view gives you a quick view of not only what's in the current directory, but also both what's in
+  the parent directory and child directory.
+
+  If this was all ranger could do, it would already be a fairly handy, albeit limited use tool
+  (it also wouldn't really be a full 'file manager' in that case either). Ranger handles much
+  more however.
+
+*** Deleting, Copying, Moving, etc.
+
+  TODO: links
+  see also:
+    - nnn
+    - joshuto
+    - lf
 
 ** Installing
 
