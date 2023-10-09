@@ -20,7 +20,11 @@
 
   If you want to follow along and run these examples in your own terminal, you can install
   ranger easily using the package manager on your operating system. On mac, it's as easy
-  as ~brew install ranger~.
+  as:
+
+  #+begin_src shell
+    brew install ranger
+  #+end_src
 
 ** Overview
 
