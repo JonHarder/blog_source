@@ -57,7 +57,8 @@
   For a tool that touts "VI key bindings", no one should be surprised at the basic file
   and directory navigation keys: =h=, =j=, =k=, and =l=. =j= moves the selection in the center column one item
   down. =k= moves one item up. =l= will either move into the directory of the selection, or open the
-  file of the selection by using your configured [[https://bash.cyberciti.biz/guide/$EDITOR_variable][$EDITOR]].
+  file of the selection by using your configured [[https://bash.cyberciti.biz/guide/$EDITOR_variable][$EDITOR]]. ~gg~ moves the cursor to the first item
+  in the directory, ~G~ moves it to the bottom.
 
   Moving around with h, j, k, and l allows you to fly around your file system, and the three-column
   view gives you a quick view of not only what's in the current directory, but also both what's in
