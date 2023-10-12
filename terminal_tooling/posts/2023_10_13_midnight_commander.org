@@ -1,0 +1,161 @@
+#+TITLE: Midnight Commander - Terminal Tooling
+#+STARTUP: inlineimages
+#+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+
+* mc                                                          :file_managers:
+
+  Let's start with a quick screenshot of mc in action.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/overview_unstyled.png]]
+
+  Eww. How very...MS Dos (or maybe this is nestalgic for you. To each their own). This is
+  intentional; as it started life as a clone of the popular [[https://en.wikipedia.org/wiki/Norton_Commander][Norton Commander]]. It was
+  first released in 1994 (8 years after its predecessor) and replicated the dual window
+  text user interface almost exactly.
+
+  Fortunately for us, mc allows you to change its appearance through the options menu.
+  I've downloaded the [[https://github.com/catppuccin/mc][Catppuccin]] theme and installed it.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/catppuccin_file.png]]
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/config_theme_1.png]]
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/config_theme_2.png]]
+
+  Let's take another look:
+  
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/overview.png]]
+
+  Much better.
+
+** Overview
+
+  This is midnight commander (or =mc= for short). If you read the previous post
+  about [[file:2023_10_06_ranger.org][ranger]], you'll notice there are two windows not three. Less obvious
+  is the fact that these two windows are disconnected from each other. Where
+  ranger's colums represented the parent and child directories of the current
+  path, these windows are two separate file explorers. Each can be moved about
+  the file system independently of each other.
+  
+  Why have two disconnected file viewers? For one extremely helpful reason.
+  Any file or directory action that requires a destination will default to
+  the path of the other window. Let's see an example. As usual, mc can be
+  installed using Homebrew:
+  
+  #+begin_src shell
+    brew install mc
+  #+end_src
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/example_copy_1.png]]
+
+  In this example, you can see the left window is viewing =~/Code/k8s-app/backend=, and the
+  right window is viewing =~/tmp/mc_demo=. When I hit =f5= for =Copy= (shortcut hints are displayed
+  on the last row of the window), the popup modal for Copying =Dockerfile= is pre-filled
+  with the right window's directory.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/example_copy_2.png]]
+
+  From here you can hit =Enter= and just copy the file, or change the name of the copied file
+  before proceeding with the copy.
+
+  Like ranger, you can select multiple files to execute any of the actions on. Hit =+= to
+  open up a prompt for selection. You can leave the value as is, ~*~ for selecting all entries
+  in the current window, or any regex you want to select only the matching items.
+
+* Interacting with mc
+
+  Midnight commander does not attempt to emulate vim bindings, but rather seeks to replicate
+  a graphical application with menu bar and all. You can even click on almost any element
+  on the screen and interact with it primarily with your mouse. The most common commands
+  of a file manager: Viewing, Editing, Copying, Moving, Deleting, Mkdir...ing, are all
+  one shortcut away using the function keys. Hints are provided at the bottom, including
+  access to a robust help manual:
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/help.png]]
+
+  You can swap focus between windows with =Tab=. To synchronize the directory viewed by the
+  unfocused tab, hit =Option-i=. To enter the currently selected directory in the other
+  window, hit =Option-o=. To quickly jump to a file path without having to navigate up
+  or down the directory tree, simply hit =Option-c= and a ~cd~ prompt you for the path to
+  jump to.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/cd.png]]
+
+** Viewing files
+
+   There are a few different ways you can view files, depending on your needs.
+   You can use the =View= quick command (bound to =f3=). This will either open the built
+   in file viewer, a fairly bare bones pager, or you can use some external file
+   viewer (done by toggling the =Options->Configuration->'Use internal view'= option).
+
+   The same is true for editing files (bound to =f4=. Mc comes with a file editor, equally bare bones,
+   but that can be changed by toggling the =Options->Configuration->'Use internal edit'=
+   option.
+
+   For a quicker way to peruse files, you can turn on "Quick View" mode (bound to =Control-x q=).
+   In this mode, any regular file that is selected in the active window will have its
+   contents shown in the inactive window. When you navigate around, the preview window
+   will update accordingly. It even comes with some basic search and goto functionality.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/quick_view.png]]
+
+
+** Hotlist
+
+  The "hotlist" is mc's name for what would commonly be called bookmarks today. Using the
+  hotlist (bound to =Control-\=), you can save a list of directories that you often visit
+  and quickly navigate back to them. You can add new directories by first going through
+  this menu, or from the main screen by hitting =Control-x h= to quick add the current
+  directory to the hotlist.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/hotlist.png]]
+
+  If you have a lot of directories in the hotlist, you can make "groups" (more like folders)
+  to store logically similar directories together. Just use the =New group= option and you're
+  good to go. You can save new directories into them, or move existing entries into or out
+  of them.
+
+* Customization
+
+  Midnight commander is very, very customizable. All its configuration is stored in
+  =~/.config/mc/ini=[fn:1]. You could edit this file by hand, but for most settings,
+  you can go through the =Options= menu to visually edit them[fn:2].
+
+  You can also customize the =User menu=. This is a quick list of actions to perform
+  on the selected file(s) you can access any time from the =Command= menu or with =f2=.
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/user_menu.png]]
+
+  
+  In today's day and age, I find a couple of these actions helpful, like =tar.gz=-ing the
+  current directory or viewing a man page, but others like /Strip headers from current newsarticle/...quaint.
+  However even this menu is customizable! You can add, remove, or edit any command in this menu
+  that you like. If there's commands that you often run only in the context of a particular
+  directory, you can create a local user menu file. How this file actually works and what
+  all the weird symbols mean is an exercise left to the reader.
+
+* Conclusion
+
+  Midnight commander may be from a different era, but much like emacs or vim, 
+
+* Footnotes
+
+[fn:2] Just be sure to save your changes (the last option in the =Options menu=).
+
+[fn:1] There are other files in the =~/.config/mc= directory that are updated when changing
+  certain settings, but =ini= is the primary one.

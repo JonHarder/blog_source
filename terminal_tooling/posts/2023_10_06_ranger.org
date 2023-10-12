@@ -1,5 +1,8 @@
 #+TITLE: Ranger - Terminal Tooling
 #+STARTUP: inlineimages
+#+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
 * Ranger                                    :file_managers:
   [[https://ranger.github.io/][Ranger]] is a "console file manager with VI key bindings." Specifically it is a terminal

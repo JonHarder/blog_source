@@ -1,0 +1,3 @@
+#+TITLE: How this blog is made
+#+STARTUP: inlineimages
+
