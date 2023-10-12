@@ -1,3 +1,9 @@
 #+TITLE: How this blog is made
 #+STARTUP: inlineimages
 
+htmlize package
+org-project-alist
+org-publish
+simple.css
+github pages
+

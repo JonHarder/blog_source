@@ -4,7 +4,6 @@
 #+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
 #+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-
 * mc                                                          :file_managers:
 
   Let's start with a quick screenshot of mc in action.
@@ -151,7 +150,34 @@
 
 * Conclusion
 
-  Midnight commander may be from a different era, but much like emacs or vim, 
+  The dual window setup might feel a little awkward at first if you're not used to it, but
+  after getting comfortable with it you'll groan every time you have to write out a whole
+  copy command by hand, or open up another finder window and click around until you've found the
+  right directory to copy to.
+
+  The heavy reliance on function keys is a bit of a bummer for me as they are far away from
+  the home row and require some hand contortions on the mac keyboard to hit the =fn= key. This
+  can be mitigated in part if you use a keyboard with [[https://qmk.fm/][configurable firmware]] by placing the
+  function keys in a more ergonomic location in a layer, but being forced to do this because
+  of my file manager is a fairly large ask. You can set up some alternate key bindings for
+  some of the shortcuts, but not the primary ones you see at the bottom of the screen. I
+  know I am probably in the minority in my unrelenting pursuit of the perfect ergonomic
+  workflow, so you mileage may vary. 
+
+  Midnight commander may be from a different era, and so some of its design patterns may be
+  old fashioned, and the terminology my be unfamiliar, but it is an extremely powerful
+  workhorse of a file manager. Older software might not be new and shiny, but it has
+  stood the test of time. For any question you may have on how to do something, there
+  is likely an answer found online. Is there a feature you liked from some other file
+  manager? Someone else has probably missed that feature and written a patch for mc enabling
+  it. New apps may come and go, but mc remains. If the keybindings don't deter you, there
+  could be a very long and happy future for you and midnight commander. If you're not a fan,
+  stay tuned for next week's article...
+
+* Additional Resources
+
+  * [[https://midnight-commander.org/wiki/doc/common/actions][key bindings]]
+  - [[https://www.youtube.com/watch?v=fJOkuaihAek][video overview]]
 
 * Footnotes
 
