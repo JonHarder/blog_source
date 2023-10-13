@@ -11,7 +11,7 @@
 #+attr_html: :width 900px
 [[../../images/terminal_tooling/posts/2023_10_13_mc/overview_unstyled.png]]
 
-  Eww. How very...MS Dos (or maybe this is nestalgic for you. To each their own). This is
+  Eww. How very...MS Dos (or maybe this is nostalgic for you. To each their own). This is
   intentional; as it started life as a clone of the popular [[https://en.wikipedia.org/wiki/Norton_Commander][Norton Commander]]. It was
   first released in 1994 (8 years after its predecessor) and replicated the dual window
   text user interface almost exactly.
@@ -40,7 +40,7 @@
   This is midnight commander (or =mc= for short). If you read the previous post
   about [[file:2023_10_06_ranger.org][ranger]], you'll notice there are two windows not three. Less obvious
   is the fact that these two windows are disconnected from each other. Where
-  ranger's colums represented the parent and child directories of the current
+  ranger's columns represented the parent and child directories of the current
   path, these windows are two separate file explorers. Each can be moved about
   the file system independently of each other.
   
@@ -57,19 +57,11 @@
 [[../../images/terminal_tooling/posts/2023_10_13_mc/example_copy_1.png]]
 
   In this example, you can see the left window is viewing =~/Code/k8s-app/backend=, and the
-  right window is viewing =~/tmp/mc_demo=. When I hit =f5= for =Copy= (shortcut hints are displayed
-  on the last row of the window), the popup modal for Copying =Dockerfile= is pre-filled
-  with the right window's directory.
+  right window is viewing =~/tmp/mc_demo=. On the bottom you'll see the numbers 1-10 and
+  an action next to each. These are the basic commands you'll likely use most when using
+  mc. Each number indicates which function key triggers the command (=f1= through =f10=).
 
-#+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/example_copy_2.png]]
 
-  From here you can hit =Enter= and just copy the file, or change the name of the copied file
-  before proceeding with the copy.
-
-  Like ranger, you can select multiple files to execute any of the actions on. Hit =+= to
-  open up a prompt for selection. You can leave the value as is, ~*~ for selecting all entries
-  in the current window, or any regex you want to select only the matching items.
 
 * Interacting with mc
 
@@ -83,16 +75,50 @@
 #+attr_html: :width 900px
 [[../../images/terminal_tooling/posts/2023_10_13_mc/help.png]]
 
+** Basic Copy, Rename, Delete
+
+  As the bottom row suggests, you can copy the highlighted file with =f5=. It will be copied
+  to the other window (by default, you can edit the destination if you want to copy to a
+  different destination).
+
+#+attr_html: :width 900px
+[[../../images/terminal_tooling/posts/2023_10_13_mc/example_copy_2.png]]
+
+  The same is true for ~RenMov~, short for ~Rename/Move~. Hitting
+  =f6= will open the ~Move~ prompt. The destination defaults to the other window and if you
+  just hit enter, it will be moved there.
+
+  To rename, open the ~RenMov~ dialog again. To simply rename the file, start typing the new
+  name and the =To:= field will be replaced with your new name. Hitting enter will rename
+  the file but keep it in the same directory. To move and rename the file, open the ~RenMov~
+  prompt, but before you start to type the new name, hit =<right>= first, this will cause
+  whatever you type to be appended to the =To:= prompt rather than overwrite it (you should see the
+  color of the populated field change color to indicate it changing from overwrite to append mode).
+  Hitting enter will move the file to the other window and rename it to whatever you typed.
+
+** Advanced Copy, Rename, Delete
+  Like ranger, you can select multiple files to execute any of the actions on. Hit =+= to
+  open up a prompt for selection. You can leave the value as is, ~*~ for selecting all entries
+  in the current window, or any regex you want to select only the matching items. If you want
+  to unselect all files or files matching some regex, hit =-=.
+
+  To select individual files, just hit =Control-t=.
+
+  From here, any ~Copy~, ~RenMov~, or ~Delete~ command will apply to all selected files.
+
+** Interacting With the Windows
+
   You can swap focus between windows with =Tab=. To synchronize the directory viewed by the
   unfocused tab, hit =Option-i=. To enter the currently selected directory in the other
   window, hit =Option-o=. To quickly jump to a file path without having to navigate up
   or down the directory tree, simply hit =Option-c= and a ~cd~ prompt you for the path to
-  jump to.
+  jump to. If you want to swap the positions of the two windows with each other,
+  hit =Control-u=.
 
 #+attr_html: :width 900px
 [[../../images/terminal_tooling/posts/2023_10_13_mc/cd.png]]
 
-** Viewing files
+** Viewing and Editing Files
 
    There are a few different ways you can view files, depending on your needs.
    You can use the =View= quick command (bound to =f3=). This will either open the built
@@ -106,7 +132,7 @@
    For a quicker way to peruse files, you can turn on "Quick View" mode (bound to =Control-x q=).
    In this mode, any regular file that is selected in the active window will have its
    contents shown in the inactive window. When you navigate around, the preview window
-   will update accordingly. It even comes with some basic search and goto functionality.
+   will update accordingly. It even comes with some basic search and go to functionality.
 
 #+attr_html: :width 900px
 [[../../images/terminal_tooling/posts/2023_10_13_mc/quick_view.png]]
@@ -174,6 +200,15 @@
   could be a very long and happy future for you and midnight commander. If you're not a fan,
   stay tuned for next week's article...
 
+
+* Alternatives
+  If you're on Linux, [[https://doublecmd.sourceforge.io/][Double Commander]] is a good GUI based dual window file manager.
+  Unfortunately, it has lost support for macOS. [[https://www.mplsoftware.com/products/maxcommander][MaxCommander]] looks like a good mac
+  native option (*note*: I have not tried either of these applications, but have heard
+  good things). It uses =Command-num= based shortcuts instead of function keys which
+  sounds far more ergonomic to me. It is currently $7.99 as of the time of writing
+  this article and closed source, which could be a deal breaker for you. If you happen
+  to give it a shot, let me know how you like it.
 * Additional Resources
 
   * [[https://midnight-commander.org/wiki/doc/common/actions][key bindings]]
