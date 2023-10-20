@@ -1,4 +1,8 @@
 #+TITLE: The Terminal Toolist
+#+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
 Welcome. This is my personal blog for all things tech. I like to tinker
 with terminal tools, keyboards, and emacs.
 
