@@ -15,6 +15,8 @@
 
 [[../../images/terminal_tooling/posts/2023_10_20_vifm/overview.png]]
 
+   /NOTE: I have installed the catppuccin theme and the [[https://github.com/thimc/vifm_devicons][vim devicons]] plugin./
+
    The emulation is so complete that I can confidently say, if you know how to use vi (or vim or neovim)
    you already know how to use vifm. Your intuition as to moving around, copying and pasting files,
    using marks, etc will guide you to the correct key or command.
@@ -97,12 +99,19 @@
 
 ** Conclusion
 
+  This is a shorter article is part because there is so much overlap with ranger, which
+  received a fuller write up.
+
   Vifm and ranger share many keybindings and a similar philosophy, so why would
   you choose one over the other? In my mind it depends on two things. 1.) Do you like
   miller columns[fn:1] or dual window displays? And 2.) do you like to customize your tools
   with a programming language (ranger uses python) or a simple declarative format
   like vifm's?
 
+  Additionally, though ranger utilizes many vim keybindings, only vifm can honestly claim
+  "If you know vim, you know vifm". That's a pretty strong statement that I'm making on their
+  behalf. This is perhaps the biggest sell, and it may just be the deciding factor for you.
+  
   There's no right or wrong here, but simply a matter of taste. Whichever you choose,
   you can rest assured that taking time to find the tool works for you will remove
   one source of friction in your workflow.
