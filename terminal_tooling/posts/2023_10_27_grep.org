@@ -22,7 +22,7 @@
   a standalone ~grep~ program was born.[fn:4]
 
   There are two ways to have ~grep~ search text. One is to provide a list of files as
-  an the target of the search which will be searched line-by-line for your pattern
+  the target of the search which will be searched line-by-line for your pattern
   and matching lines will be printed. The other is to search incoming text from [[man:stdin][stdin]]
   and print the matching lines.
 
@@ -472,7 +472,7 @@
 * Footnotes
 
 [fn:5] If you're ever unsure of the result of a shell glob, you can run [[man:echo][echo]] or [[man:ls][ls]] first to
-  see which files will selected.
+  see which files will be selected.
 
 [fn:4] https://en.wikipedia.org/wiki/Ed_(text_editor)
 
