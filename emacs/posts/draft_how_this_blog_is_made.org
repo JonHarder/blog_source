@@ -6,4 +6,5 @@ org-project-alist
 org-publish
 simple.css
 github pages
+simple-httpd package (~httpd-serve-directory~)
 
