@@ -73,14 +73,14 @@
   with a ~+~ (~-amin +30~). This use of ~+~ and ~-~ applies to any primary that takes a numeric
   argument.
 
-*** By creation time
-
   If you wanted to look at the files changed over a longer period of time without
   having to pull in a [[https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html][command substitution]] (~-amin -$(expr 60 \* 24 \* 15)~), you can
   instead use ~-atime~ which excepts a number and a time spcifier. =a= for seconds, =m= for
   minutes, =h= for hours, =d= for days, and =w= for weeks.
 
-  If you were instead insterested in the file /creation/ time rather than /access/ time,
+*** By creation time
+
+  If you were instead interested in the file /creation/ time rather than /access/ time,
   you could use ~-Bmin~ and its counterpart ~-Btime~ which peform the same searches as
   ~-amin~ and ~-atime~ but for file creation time.
 
