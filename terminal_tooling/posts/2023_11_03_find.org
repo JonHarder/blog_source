@@ -75,7 +75,7 @@
 
   If you wanted to look at the files changed over a longer period of time without
   having to pull in a [[https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html][command substitution]] (~-amin -$(expr 60 \* 24 \* 15)~), you can
-  instead use ~-atime~ which excepts a number and a time spcifier. =a= for seconds, =m= for
+  instead use ~-atime~ which excepts a number and a time specifier. =s= for seconds, =m= for
   minutes, =h= for hours, =d= for days, and =w= for weeks.
 
 *** By creation time
