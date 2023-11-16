@@ -485,6 +485,9 @@
   The ~-i '.bak'~ tells =sed= to make backups of each file it changes so you can recover the
   pre-changed version in case things went wrong.
 
+  p.s. When setting up a blog which auto executes embedded scripts, don't let it run
+  the scripts that mess with the articles themselves. Things get....weird.
+
 [fn:1] In this article, the input text is the first chapter of the novel /Moby Dick/, accessed from [[https://www.gutenberg.org/cache/epub/2701/pg2701-images.html#link2HCH0001][www.gutenberg.org]].
 
 [fn:2] The [[man:sed][sed]] man page is helpful here to understand the differences, if only to point the viewer to the man page of [[man:re_format(7)][re_format(7)]]
