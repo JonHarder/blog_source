@@ -2,14 +2,12 @@
 #+STARTUP: inlineimages
 #+OPTIONS: ^:nil
 #+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
-#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 #+PROPERTY: header-args:sh :results output :exports both :cache yes
 
 
-* sed (part 2)                                                   :unix_tools:
-
-** Overview
+** Overview                                                      :unix_tools:
 
   [[file:2023_11_10_sed.org][Last]] time we discussed the command line utility, =sed=. As a stream editor, =sed=
   provides a programmatic way to edit files or streams of data. Rather than
@@ -460,13 +458,32 @@
   to change. I'm just trying to give you another option, rather than /needing/ to open
   up VS Code or some other application just for simple, repetitive edits. When your
   primary aim with sed is to read in a file, make some changes and save the results
-  back to the same file, you can use =sed='s ~-i~ flag.
+  back to the same file, you can use =sed='s ~-i~ flag.[fn:5]
 
   Hopefully this pulls back the curtain on =sed= a bit. I don't think you should always
   reach for sed when building a shell pipeline to edit some text, but you should at
   least ask yourself, could I just do all of this using =sed=?
 
 * Footnotes
+[fn:5] I recently updated the layout if posts on this blog and needed to update the
+  links in all the articles to match the update. Once I figured out what changes
+  I needed to make, =sed= performed all the heavy lifting for me:
+  #+begin_src sh :eval never-export
+    for file in *.org; do
+	sed -e 's#\.\./images#images#' -e 's#terminal_tooling/##' -i '.bak' "$file"
+    done
+  #+end_src
+
+  The ~#~ is the separator for my substitution commands. Most examples of the ~s~ function
+  use ~/~, but it's not strictly necessary. Whichever token you provide after the ~s~ becomes
+  the deliniator between each component of the substitution.
+
+  This has the effect of going through each article source file and replacing each image
+  link with the same path, one directory up. The ~-e~ allows you to specify multiple scripts
+  which =sed= will run serially.
+
+  The ~-i '.bak'~ tells =sed= to make backups of each file it changes so you can recover the
+  pre-changed version in case things went wrong.
 
 [fn:1] In this article, the input text is the first chapter of the novel /Moby Dick/, accessed from [[https://www.gutenberg.org/cache/epub/2701/pg2701-images.html#link2HCH0001][www.gutenberg.org]].
 

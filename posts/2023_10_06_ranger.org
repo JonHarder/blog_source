@@ -1,8 +1,8 @@
 #+TITLE: Ranger - [[../index.org][Terminal Tooling]]
 #+STARTUP: inlineimages
 #+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
-#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
 * Ranger                                    :file_managers:
   [[https://ranger.github.io/][Ranger]] is a "console file manager with VI key bindings." Specifically it is a terminal
@@ -32,8 +32,8 @@
 ** Overview
 
  #+attr_html: :width 900px
- [[../../images/terminal_tooling/posts/2023_10_06_ranger/dir_view.png]]
-
+ [[../images/posts/2023_10_06_ranger/dir_view.png]]
+ 
   This is the initial view using ranger. You'll notice three vertical columns (and three
   highlighted files/directories). The center of the three is the working column, and it's on
   the selected entry in this column that your actions will operate (in this example, on the
@@ -44,14 +44,13 @@
   is highlighted.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/file_view.png]]
- 
+[[../images/posts/2023_10_06_ranger/file_view.png]]
+
   You might recognize this three-pane design pattern. If you've used the GUI file manager
   for macOS, Finder, this design has been a staple since their [[https://flaming.codes/posts/miller-columns-filesystem-ui][NeXT]] days.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/finder.png]]
-
+[[../images/posts/2023_10_06_ranger/finder.png]]
 
 ** Navigation and file manipulation
 
@@ -85,7 +84,7 @@
   as before only this time, all the selected files will be copied/pasted.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/multiple_selection.png]]
+[[../images/posts/2023_10_06_ranger/multiple_selection.png]]
 
   In this example, =app.go=, =db.go=, =Dockerfile=, and =main.go= are selected (but *not* =tracing.go=).
   When you mark a file, the highlighted line is automatically moved to the next item (so you
@@ -103,20 +102,20 @@
   with the file and the cursor will be on the =.= file just before the extension.
 
 #+attr_html: :width 275px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/rename_lower_case_a.png]]
+[[../images/posts/2023_10_06_ranger/rename_lower_case_a.png]]
 
   If you want to change the extension (or just want to have the whole file name pre-populated
   so you can change whatever you want), hit ~A~ and the cursor will be at the very end of the file
   name in the prompt.
 
 #+attr_html: :width 275px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/rename_upper_case_a.png]]
+[[../images/posts/2023_10_06_ranger/rename_upper_case_a.png]]
 
   And lastly if you want to prefix something in front of the file name, you can hit ~I~ to
   pre-populate with the file and the cursor at the front.
 
 #+attr_html: :width 275px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/rename_capital_i.png]]
+[[../images/posts/2023_10_06_ranger/rename_capital_i.png]]
 
 *** Bulk renaming
 
@@ -129,7 +128,7 @@
    your editor to rename the files however you want.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/bulk_rename_1.png]]
+[[../images/posts/2023_10_06_ranger/bulk_rename_1.png]]
 
    When you exit the file, another temp file
    will be conjured up giving you a preview of the shell commands it will run (using ~mv~).
@@ -137,7 +136,7 @@
    will be renamed/moved to). After saving, ranger will execute the rename.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_06_ranger/bulk_rename_2.png]]
+[[../images/posts/2023_10_06_ranger/bulk_rename_2.png]]
 
 
 * Further reading

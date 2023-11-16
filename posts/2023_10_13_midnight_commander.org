@@ -1,15 +1,15 @@
 #+TITLE: Midnight Commander - [[../index.org][Terminal Tooling]]
 #+STARTUP: inlineimages
 #+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
-#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
 * mc                                                          :file_managers:
 
   Let's start with a quick screenshot of mc in action.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/overview_unstyled.png]]
+[[../images/posts/2023_10_13_mc/overview_unstyled.png]]
 
   Eww. How very...MS Dos (or maybe this is nostalgic for you. To each their own). This is
   intentional; as it started life as a clone of the popular [[https://en.wikipedia.org/wiki/Norton_Commander][Norton Commander]]. It was
@@ -20,18 +20,18 @@
   I've downloaded the [[https://github.com/catppuccin/mc][Catppuccin]] theme and installed it.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/catppuccin_file.png]]
+[[../images/posts/2023_10_13_mc/catppuccin_file.png]]
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/config_theme_1.png]]
+[[../images/posts/2023_10_13_mc/config_theme_1.png]]
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/config_theme_2.png]]
+[[../images/posts/2023_10_13_mc/config_theme_2.png]]
 
   Let's take another look:
   
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/overview.png]]
+[[../images/posts/2023_10_13_mc/overview.png]]
 
   Much better.
 
@@ -54,7 +54,7 @@
   #+end_src
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/example_copy_1.png]]
+[[../images/posts/2023_10_13_mc/example_copy_1.png]]
 
   In this example, you can see the left window is viewing =~/Code/k8s-app/backend=, and the
   right window is viewing =~/tmp/mc_demo=. On the bottom you'll see the numbers 1-10 and
@@ -68,12 +68,12 @@
   Midnight commander does not attempt to emulate vim bindings, but rather seeks to replicate
   a graphical application with menu bar and all. You can even click on almost any element
   on the screen and interact with it primarily with your mouse. The most common commands
-  of a file manager: Viewing, Editing, Copying, Moving, Deleting, Mkdir...ing, are all
+  of a file manager: Viewing, Editing, Copying, Moving, Deleting, Mkdir.ing, are all
   one shortcut away using the function keys. Hints are provided at the bottom, including
   access to a robust help manual:
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/help.png]]
+[[../images/posts/2023_10_13_mc/help.png]]
 
 ** Basic Copy, Rename, Delete
 
@@ -82,7 +82,7 @@
   different destination).
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/example_copy_2.png]]
+[[../images/posts/2023_10_13_mc/example_copy_2.png]]
 
   The same is true for ~RenMov~, short for ~Rename/Move~. Hitting
   =f6= will open the ~Move~ prompt. The destination defaults to the other window and if you
@@ -116,7 +116,7 @@
   hit =Control-u=.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/cd.png]]
+[[../images/posts/2023_10_13_mc/cd.png]]
 
 ** Viewing and Editing Files
 
@@ -135,7 +135,7 @@
    will update accordingly. It even comes with some basic search and go to functionality.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/quick_view.png]]
+[[../images/posts/2023_10_13_mc/quick_view.png]]
 
 
 ** Hotlist
@@ -147,7 +147,7 @@
   directory to the hotlist.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/hotlist.png]]
+[[../images/posts/2023_10_13_mc/hotlist.png]]
 
   If you have a lot of directories in the hotlist, you can make "groups" (more like folders)
   to store logically similar directories together. Just use the =New group= option and you're
@@ -164,11 +164,11 @@
   on the selected file(s) you can access any time from the =Command= menu or with =f2=.
 
 #+attr_html: :width 900px
-[[../../images/terminal_tooling/posts/2023_10_13_mc/user_menu.png]]
+[[../images/posts/2023_10_13_mc/user_menu.png]]
 
   
   In today's day and age, I find a couple of these actions helpful, like =tar.gz=-ing the
-  current directory or viewing a man page, but others like /Strip headers from current newsarticle/...quaint.
+  current directory or viewing a man page, but others like /Strip headers from current newsarticle/.quaint.
   However even this menu is customizable! You can add, remove, or edit any command in this menu
   that you like. If there's commands that you often run only in the context of a particular
   directory, you can create a local user menu file. How this file actually works and what
@@ -198,7 +198,7 @@
   manager? Someone else has probably missed that feature and written a patch for mc enabling
   it. New apps may come and go, but mc remains. If the keybindings don't deter you, there
   could be a very long and happy future for you and midnight commander. If you're not a fan,
-  stay tuned for next week's article...
+  stay tuned for next week's article.
 
 
 * Alternatives

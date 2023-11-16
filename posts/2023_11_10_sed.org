@@ -1,8 +1,8 @@
 #+TITLE: sed - [[../index.org][Terminal Tooling]]
 #+STARTUP: inlineimages
 #+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
-#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 #+PROPERTY: header-args:sh :results output :exports both :cache yes
 
 

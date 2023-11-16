@@ -1,8 +1,8 @@
 #+TITLE: Vifm - [[../index.org][Terminal Tooling]]
 #+STARTUP: inlineimages
 #+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-#+HTML_HEAD: <link rel="stylesheet" href="/css/stylesheet.css" />
-#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+#+HTML_HEAD: <link rel="stylesheet" href="../css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
 
 * Vifm                                                        :file_managers:
@@ -13,7 +13,7 @@
    of midnight commander, but attempts to replicate vi keybindings as
    much as possible. 
 
-[[../../images/terminal_tooling/posts/2023_10_20_vifm/overview.png]]
+[[../images/posts/2023_10_20_vifm/overview.png]]
 
    /NOTE: I have installed the catppuccin theme and the [[https://github.com/thimc/vifm_devicons][vim devicons]] plugin./
 
@@ -32,7 +32,7 @@
   =G= goes to the last. =H=, =M=, =L= move to the top, middle, and bottom of the visible window's contents.
 
   You can rename, cut, copy, and delete files just like you would expect for a vim inspired file
-  manager (just like in [[file:2023_10_06_ranger.org::*Renaming][ranger]]). And bulk updates work the same way (using a temporary file which
+  manager (just like in [[file:2023_10_06_ranger.org::*Renaming][ranger]]. And bulk updates work the same way (using a temporary file which
   you edit in order to specify the desired changes)
 
 ** Finding files
@@ -43,11 +43,11 @@
   Consider the following situation: You're at the root of some project, and you want to find
   all the files which contain the string ~db~.
 
-  [[../../images/terminal_tooling/posts/2023_10_20_vifm/grep_1.png]]
+  [[../images/posts/2023_10_20_vifm/grep_1.png]]
 
   Execute ~:grep database~, and a window will pop up with all the results recursively.
 
-  [[../../images/terminal_tooling/posts/2023_10_20_vifm/grep_2.png]]
+  [[../images/posts/2023_10_20_vifm/grep_2.png]]
 
   Hmmm... that certainly gave us /all/ the results. But there's probably some files included
   in the results that we don't care about, notably ~go.mod~ and ~go.sum~.
@@ -55,11 +55,11 @@
   Let's select those two files (using ~t~), then invert the selection (using ~:invert s~, for
   invert selection)
 
-  [[../../images/terminal_tooling/posts/2023_10_20_vifm/grep_3.png]]
+  [[../images/posts/2023_10_20_vifm/grep_3.png]]
 
   Now running grep will limit its search to only the selected files.
 
-  [[../../images/terminal_tooling/posts/2023_10_20_vifm/grep_4.png]]
+  [[../images/posts/2023_10_20_vifm/grep_4.png]]
   
   Now that's much easier to work with. This window can be navigated with the same vim
   bindings for regular navigation, and pressing (=l= or =enter)= on any of the lines will jump
