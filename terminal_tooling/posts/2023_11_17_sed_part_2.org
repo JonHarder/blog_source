@@ -31,7 +31,7 @@
   You may have heard of the complimentary tools, [[man:head][head]] and [[man:tail][tail]] in order to
   view select number of lines in a file.
 
-  The following prints the first 5 lines of a file:
+  The following prints the first 5 lines of a file:[fn:1]
   
   #+begin_src sh
     head -n5 moby_dick.txt
@@ -111,10 +111,12 @@
     : whale
     : whale
 
-    Ok, that was a mouthful. Let's break the command down into its constituent parts.
+    Ok, that was a mouthful. The gist is that we match the whole line and substitute that
+    with just our search term using a capture group. Let's break the command down into its
+    constituent parts.
 
-    The ~-E~ flag to =sed= enables extended (modern) regular expressions[fn:1] allowing for the
-    regex in the substitution ~/^.*(whal(e|ing)).*$/~ to match both alternatives. The ~^~ matches
+    The ~-E~ flag to =sed= enables extended (modern) regular expressions[fn:2] allowing for the
+    alternative ~|~ regex character in the substitution: ~whal(e|ing)~. The ~^~ matches
     the beginning of the line, and the ~$~ matches the end. Putting it all together, the regex
     matches the whole line, but creates a capture group around /only/ the word with alternatives
     for whale and whaling.
@@ -256,7 +258,7 @@
   : There now is your insular city of the Manhattoes, belted round by wharves as Indian isles by coral reefs—commerce surrounds it with her surf. Right and left, the streets take you waterward. Its extreme downtown is the battery, where that noble mole is washed by waves, and cooled by breezes, which a few hours previous were out of sight of land. Look at the crowds of water-gazers there.
   : Circumambulate the city of a dreamy Sabbath afternoon. Go from Corlears Hook to Coenties Slip, and from thence, by Whitehall, northward. What do you see?—Posted like silent sentinels all around the town, stand thousands upon thousands of mortal men fixed in ocean reveries. Some leaning against the spiles; some seated upon the pier-heads; some looking over the bulwarks of ships from China; some high aloft in the rigging, as if striving to get a still better seaward peep. But these are all landsmen; of week days pent up in lath and plaster—tied to counters, nailed to benches, clinched to desks. How then is this? Are the green fields gone? What do they here?
 
-  The effect of the ~!~ is to only run the given function when the line is *not* selected by the provided pattern.
+  The effect of the ~!~ is to only run the given function when the line is *not* selected by the address.
 
 * The hold space
   So there's actually another buffer that =sed= can hold data in while it's executing. In addition
@@ -310,7 +312,7 @@
   ---
   #+end_example
 
-  There's a lot going on here. But its mostly a culmination of everything that we're covered so far
+  There's a lot going on here. But it's mostly a culmination of everything that we're covered so far
   so I think we can work through it. First we run the file contents through a simple =sed= invocation
   that just deletes all the empty lines. From there, the edited output is piped into our
   main =sed= script.
@@ -332,11 +334,11 @@
   together with the negated function list and the regex address say:
 
   On any line that doesn't contain the string "ship", place that line into the hold
-  space, taking the current contents of the hold space and placing them into the
+  space, taking the current contents of the hold space and place them into the
   pattern space. Then delete the pattern space. Effectively, this saves each line
   into the hold space just in case the next line *does* match our regex. Because we
   need to keep a memory of the prior line to display the context around the match,
-  this will always have the line of the last cycle in memory.
+  this will always have the line of the previous cycle in memory.
 
   Next let's tackle the bigger section:
 
@@ -358,11 +360,11 @@
   is the counterpart. This runs the list of functions over each line that *does* match
   our search term.
 
-  ~x~ and then ~p~ will swap the hold space with the pattern space. Because of the first
-  section, we know that the hold space will always contain the contents of the previous
-  cycle. So ~x~ and ~p~ prints the previous line. The next ~x~ and ~p~ swap the hold and pattern
-  spaces back, meaning the current line is back in the pattern space which is then
-  printed.
+  ~x~ and then ~p~ will swap the hold space with the pattern space and then print it.
+  Because of the first section, we know that the hold space will always contain
+  the contents of the previous cycle. So ~x~ and ~p~ together print the previous line.
+  The next ~x~ and ~p~ swap the hold and pattern spaces back, meaning the current line
+  is back in the pattern space which is then printed.
 
   The ~n~ is a new function as well. You can think of it as hitting the down arrow in
   your text editor. Sed wipes the current pattern space, and pulls the next line
@@ -373,10 +375,10 @@
   /"Write =text= to standard output immediately before each attempt to read a line
   of input..."/ but I find that description really confusing since it seems to indicate
   the text should appear before other things. How it clicked for me was thinking about
-  it as an append action like in vim. =a= for after, =i= for before.[fn:2] For any of the
+  it as an append action like in vim. =a= for after, =i= for before.[fn:3] For any of the
   functions that take some =text=, the function must have a back slash and a newline
   immediately after it, followed by the text you wish to add, followed by the
-  newline.
+  newline.[fn:4]
 
   In this instance:
 
@@ -393,7 +395,7 @@
   function, we need to add it to the hold space in order to continue the
   logic of adding each "previous" line to the hold space.
 
-  And here's the script again in all its glory:
+  Here's the script again in all its glory:
   
   #+begin_src sh
     sed -e '/^$/ d' moby_dick.txt | sed -n '
@@ -430,11 +432,8 @@
   ---
   #+end_example
   
-  There are a handful of more functions to explore, but this article has already gone on far longer than
+  There are a handful of additional functions to explore, but this article has already gone on far longer than
   I anticipated, so feel free to take your newfound knowledge and experiment with them.
-
-# [[man:sed][man sed]]
-# https://www.grymoire.com/Unix/Sed.html#uh-0
 
 * Conclusion
   The examples (and a great deal of my understanding of how sed works) has come from this article: 
@@ -459,16 +458,25 @@
   fancier changes? That depends. When do you need to just open up an interactive editor
   and poke around? That also depends on what you're looking for and what you're trying
   to change. I'm just trying to give you another option, rather than /needing/ to open
-  up VS Code or some other application just for simple, repetitive edits. When you're
+  up VS Code or some other application just for simple, repetitive edits. When your
   primary aim with sed is to read in a file, make some changes and save the results
   back to the same file, you can use =sed='s ~-i~ flag.
 
   Hopefully this pulls back the curtain on =sed= a bit. I don't think you should always
   reach for sed when building a shell pipeline to edit some text, but you should at
-  least ask yourself, could I just do all of this in =sed=?
+  least ask yourself, could I just do all of this using =sed=?
 
 * Footnotes
-[fn:2] Sed does support the ~i~ function, which writes the text before the next command.
 
-[fn:1] The [[man:sed][sed]] man page is helpful here to understand the differences, if only to point the
-  viewer to the man page of [[man:re_format(7)][re_format(7)]]
+[fn:1] In this article, the input text is the first chapter of the novel /Moby Dick/, accessed from [[https://www.gutenberg.org/cache/epub/2701/pg2701-images.html#link2HCH0001][www.gutenberg.org]].
+
+[fn:2] The [[man:sed][sed]] man page is helpful here to understand the differences, if only to point the viewer to the man page of [[man:re_format(7)][re_format(7)]]
+
+[fn:3] Sed does support the ~i~ function, which writes the text before the next command.
+
+[fn:4] Thinking about =sed= as a text editor really helps to understand how it sees
+  the world. If you're famaliar with vim, you know of ~d~ to delete things, ~i~ to
+  insert before, ~a~ to insert after, ~c~ to change things. These all have counterparts
+  in =sed=, but all are /line-oriented/. So ~d~ deletes the current line from the input
+  stream, ~i~ inserts a given line before the current line, ~a~ inserts after, and ~c~
+  replaces the current line with the given =text=.
