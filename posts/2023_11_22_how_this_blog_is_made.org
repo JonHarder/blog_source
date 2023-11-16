@@ -1,0 +1,36 @@
+#+TITLE: How This Blog is Made - [[../index.org][Terminal Tooling]]
+#+STARTUP: inlineimages
+#+OPTIONS: ^:nil
+#+HTML_HEAD: <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+#+HTML_HEAD: <link rel="stylesheet" href="../css/stylesheet.css" />
+#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+#+PROPERTY: header-args:sh :results output :exports both :cache yes
+
+
+* Overview                                                       :emacs:blog:
+   Because of the holiday weekend, this will be a bit of a different article.
+   We will be taking a break from our series on unix tools and talking about
+   the build and deploy proccess for this blog itself.
+
+   We will cover the proccess in three distinct sections:
+
+   * Writing
+   * Exporting
+   * Publishing
+
+* Writing
+  * emacs
+  * org
+  * simple-httpd
+
+* Exporting
+
+  * org-publish
+    * org-project-alist
+  * htmlize
+  * simple.css
+  
+
+* Publishing
+
+  * github pages

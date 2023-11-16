@@ -465,6 +465,22 @@
   least ask yourself, could I just do all of this using =sed=?
 
 * Footnotes
+
+[fn:1] In this article, the input text is the first chapter of the novel /Moby Dick/,
+  accessed from [[https://www.gutenberg.org/cache/epub/2701/pg2701-images.html#link2HCH0001][www.gutenberg.org]].
+
+[fn:2] The [[man:sed][sed]] man page is helpful here to understand the differences, if only to
+  point the viewer to the man page of [[man:re_format(7)][re_format(7)]]
+
+[fn:3] Sed does support the ~i~ function, which writes the text before the next command.
+
+[fn:4] Thinking about =sed= as a text editor really helps to understand how it sees
+  the world. If you're famaliar with vim, you know of ~d~ to delete things, ~i~ to
+  insert before, ~a~ to insert after, ~c~ to change things. These all have counterparts
+  in =sed=, but all are /line-oriented/. So ~d~ deletes the current line from the input
+  stream, ~i~ inserts a given line before the current line, ~a~ inserts after, and ~c~
+  replaces the current line with the given =text=.
+
 [fn:5] I recently updated the layout if posts on this blog and needed to update the
   links in all the articles to match the update. Once I figured out what changes
   I needed to make, =sed= performed all the heavy lifting for me:
@@ -487,16 +503,3 @@
 
   p.s. When setting up a blog which auto executes embedded scripts, don't let it run
   the scripts that mess with the articles themselves. Things get....weird.
-
-[fn:1] In this article, the input text is the first chapter of the novel /Moby Dick/, accessed from [[https://www.gutenberg.org/cache/epub/2701/pg2701-images.html#link2HCH0001][www.gutenberg.org]].
-
-[fn:2] The [[man:sed][sed]] man page is helpful here to understand the differences, if only to point the viewer to the man page of [[man:re_format(7)][re_format(7)]]
-
-[fn:3] Sed does support the ~i~ function, which writes the text before the next command.
-
-[fn:4] Thinking about =sed= as a text editor really helps to understand how it sees
-  the world. If you're famaliar with vim, you know of ~d~ to delete things, ~i~ to
-  insert before, ~a~ to insert after, ~c~ to change things. These all have counterparts
-  in =sed=, but all are /line-oriented/. So ~d~ deletes the current line from the input
-  stream, ~i~ inserts a given line before the current line, ~a~ inserts after, and ~c~
-  replaces the current line with the given =text=.

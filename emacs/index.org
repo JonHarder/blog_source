@@ -1,5 +1,0 @@
-#+TITLE: Emacs
-* Emacs
-
-** Posts
-  - DRAFT [[./posts/draft_how_this_blog_is_made.org][How this blog is made]]
