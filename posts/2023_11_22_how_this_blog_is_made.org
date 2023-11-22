@@ -14,23 +14,137 @@
 
    We will cover the proccess in three distinct sections:
 
-   * Writing
-   * Exporting
-   * Publishing
+   * [[*Writing][Writing]]
+   * [[*Exporting][Exporting]]
+   * [[*Publishing][Publishing]]
 
 * Writing
-  * emacs
-  * org
-  * simple-httpd
+  First, the cornerstone of this whole project is [[https://www.gnu.org/software/emacs/][emacs]]. Emacs is the integrated text
+  editing environment that came out decades before IDEs were a thing. It is a text editor
+  with a teeny tiny C kernel, and lots and lots of lisp code written to handle all the
+  rest. What is unique about emacs is that all that lisp code is open to the user. You
+  can call any function, change any variable, write new behavior, augment existing
+  behavior using pre or post hooks.
+
+  This means practically /every/ facet of emacs' behavior can be customized, and done so
+  using the tools that the editor itself is built with. The line between user and developer
+  are so blurred in emacs that it might as well not exist. I use it for writing notes,
+  making this blog, writing software, reading [[man:man][man]] pages (very helpful when writing a blog
+  dedicated to command line tools!), tracking work and todos, and reading email. There
+  are arguably better tools out there for specific tasks, but I view the benefit of having
+  all my tools wrapped up in the same application, sharing the same configuration
+  language as more valuable.
+
+  For this blog specifically, I use the [[https://protesilaos.com/emacs/denote][denote]] package to jot down an idea for an article.
+  Beyond the basics of simply /writing/ text, the venerable [[https://orgmode.org/][org mode]] is my strusty companion.
+  You could think of it like Markdown, but far more fully featured. It allows for headings,
+  titles, metadata, footnotes, embedded (and executable!) code snippets, links to other
+  files, websites, embedded images, and more. Every bit of code on this blog was written
+  in an embedded shell block, and actually executed on my computer, with the results
+  automatically inserted into the document.
+
+  This org source blog for instance:
+  
+  #+begin_example
+    #+begin_src sh :exports both :results output :dir ~/Documents/notes :cache yes
+      find . -iname '*_article*_posix*.org'
+    #+end_src
+  #+end_example
+
+  gets exported as:[fn:1]
+
+  #+begin_src sh :exports both :results output :dir ~/Documents/notes :cache yes
+    find . -iname '*_article*_posix*.org'
+  #+end_src
+
+  #+RESULTS[f14f75582e39a150d555bfadcfda05deb814ae48]:
+  : ./20231121T100422--xargs__article_blog_posix.org
+
+  Code exporting will be covered in more depth in the [[*Exporting][Exporting]] section. But other than that,
+  articles are mostly just starndard org files. I can add an image where I want by just adding
+  a link to it in the file. Headers, bold, italics, code, and footnotes are all just native
+  features of org files, meaning I don't have to think about how to correctly format something
+  for html.
+
+  The last piece of the writing experience that I use is another emacs package called [[https://melpa.org/#/simple-httpd][simple-httpd]].
+  This asks for a directory to serve, and starts a local web server exposing the html, css, and
+  javascript my export process produces. This gives me a tight feedback loop between writing
+  content and seeing the final results in a browser.
 
 * Exporting
+  Exporting the org documents into html and css is made possible by the built-in [[https://orgmode.org/manual/Publishing.html][org-publish]].
+  I need only configure some information about the project, and then run the command ~org-publish~.
+  Here is what I have configured for the blog:
 
-  * org-publish
-    * org-project-alist
-  * htmlize
-  * simple.css
-  
+  #+begin_src emacs-lisp
+    (setq org-publish-project-alist
+	  (list (list "blog"
+		      :components (list "blog-org" "blog-static"))
+		(list "blog-org"
+		      :base-directory "~/blog/org"
+		      :publishing-directory "~/blog/public"
+		      :auto-sitemap nil
+		      :recursive t
+		      :with-broken-links t
+		      :with-creator t
+		      :section-numbers nil
+		      :exclude "README"
+		      :export-exclude-tags (list "draft")
+		      :with-author "Jon Harder"
+		      :with-toc nil
+		      :html-htmlize-output-type 'inline-css
+		      :html-doctype "html5"
+		      :html-html5-fancy t
+		      :html-preamble nil
+		      :html-postamble nil)
+		(list "blog-static"
+		      :base-directory "~/blog/org/"
+		      :base-extension "css\\|ico\\|png\\|jpg\\|jpeg\\|gif"
+		      :publishing-directory "~/blog/public/"
+		      :recursive t
+		      :publishing-function #'org-publish-attachment)))
+  #+end_src
+
+  Going into detail about emacs' exporting and publishing functionality will have to
+  be saved for another time, but this is all it takes to turn my org files into html.
+
+  There is one additional convenience emacs package I use called [[https://github.com/hniksic/emacs-htmlize][htmlize]]. It takes the
+  native source code syntax highlighting org supports out of the box and generates
+  css styling to make the exported code look the same. It even takes into account the user's
+  current color theme when generating the stylized source.
+
+  By default, org-publish adds some minimal css to published project, but it's quite
+  plain and not very pleasant to look at. Instead of using it, I include [[https://simplecss.org/][simple.css]]
+  to take my existing html and turn it into something nice to look at. Its philosophy
+  is to stylize the basic html tags rather than develop a system of css classes that
+  you have to integrate into your pages. This means I can pretty much just include
+  this css into the project and forget about any further styling.
 
 * Publishing
+  Lastly, the blog is hosted on GitHub, using their GitHub [[https://pages.github.com/][pages]] feature. It's a pretty
+  simple system where you just track your website in git, and any time you push up
+  changes to the main branch, it handles pushing out the updated content onto your
+  domain. There's not much else to comment on here. My goal in crafting this blog
+  was to focus on content as much as possible and have a simple, reproducible build
+  system. I am *not* a css guru, and so I sought to lean on plain html and existing
+  css frameworks so I can focus my attention on writing. Org was familiar to me and
+  allows me to just write and let it handle formatting.
 
-  * github pages
+  Overall I'm quite happy with this setup. However, one major annoyance I've encountered
+  is needing to track changes to this project in two separate repositories. One for
+  the finished product (html, css), and the other for the original source (the org files).
+  GitHub pages helpfully auto-deploys changes to my web repository, but that still leaves
+  me running the export command by hand, and then going into the web repo to commit
+  and push whatever changes were produced by the export.
+
+  In theory I could set up a GitHub action to run a stripped down version of emacs
+  and have it run the publish command on push to the source repo, negating the need
+  for a separate web repo. This has the /feel/ of something that is /technically/
+  possible, but fraught with so many little issues and corner cases that it hasn't
+  spurred me to try it out.
+
+* Footnotes
+
+[fn:1] The results are my notes as captured by the denote emacs package. I will
+  likely write a dedicated article on this, however the gist of the ~find~ command
+  is to search for all notes that have been tagged with both ~article~ and ~posix~.
