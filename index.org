@@ -21,6 +21,7 @@ manager, [[file:posts/2023_10_06_ranger.org][ranger]].  This will be the first o
 file managers (October is national terminal file manager month...I just decided).
 
 ** Posts
+   - [2024-01-19] [[file:posts/2024_01_19_zoxide.org][Zoxide]]
    - [2023-12-22] [[file:posts/2023_12_22_intro_to_bash_scripting.org][Intro to Bash Scripting]]
    - [2023-12-14] [[file:posts/2023_12_14_fzf.org][fzf]]
    - [2023-12-08] [[file:posts/2023_12_08_jq.org][jq]]
